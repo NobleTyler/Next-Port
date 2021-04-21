@@ -4,17 +4,26 @@ import utilStyles from '../styles/utils.module.css'
 import { getSortedPostsData } from '../lib/posts'
 import Link from 'next/link'
 import Date from '../components/date'
+import { GetStaticProps } from 'next'
 
-
-export default function Home({ allPostsData }) {
+export default function Home({
+  allPostsData
+}: {
+  allPostsData: {
+    date: string
+    title: string
+    id: string
+  }[]
+}) {
   return (
     <Layout home>
       <Head>
         <title>{siteTitle}</title>
       </Head>
       <section className={utilStyles.headingMd}>
-        <p><strong>Pragmatic</strong> and <strong>responsible</strong> engineering is a passion of mine that I bring to the table with every project I do.<br />
-I have a background in React as well as multiple back-end technologies and am willing to learn anything that is needed to deliver the best product. </p>
+        <p>
+          <p><strong>Pragmatic</strong> and <strong>responsible</strong> engineering is a passion of mine that I bring to the table with every project I do.<br /> I have a background in React as well as multiple back-end technologies and am willing to learn anything that is needed to deliver the best product. </p>
+        </p>
       </section>
       <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
         <h2 className={utilStyles.headingLg}>Blog</h2>
@@ -36,7 +45,7 @@ I have a background in React as well as multiple back-end technologies and am wi
   )
 }
 
-export async function getStaticProps() {
+export const getStaticProps: GetStaticProps = async () => {
   const allPostsData = getSortedPostsData()
   return {
     props: {
