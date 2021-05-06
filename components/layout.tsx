@@ -3,9 +3,10 @@ import Image from 'next/image'
 import styles from './layout.module.css'
 import utilStyles from '../styles/utils.module.css'
 import Link from 'next/link'
+import Menu from '../components/menu-bar'
 
 const name = 'Tyler Noble'
-export const siteTitle = 'Next.js Sample Website'
+export const siteTitle = 'Tylers World'
 
 export default function Layout({
   children,
@@ -20,7 +21,7 @@ export default function Layout({
         <link rel="icon" href="/favicon.ico" />
         <meta
           name="description"
-          content="Learn how to build a personal website using Next.js"
+          content="Where I go to write things related to software end it's development"
         />
         <meta
           property="og:image"
@@ -32,6 +33,7 @@ export default function Layout({
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
       <header className={styles.header}>
+        <Menu className={styles.navbar} />
         {home ? (
           <>
             <Image
